@@ -1,15 +1,14 @@
 package com.yilan.common;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.http.HttpServletResponse;
-
-
+import com.yilan.utils.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AbstractController {
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class AbstractController extends SecureController{
 
 	/** Logger available to subclasses */
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
@@ -19,8 +18,8 @@ public class AbstractController {
 		response.setContentType("application/json");
 		try {
 			PrintWriter print = response.getWriter();
-			print.print(jsonUtil.toJson(ob));
-			logger.info(jsonUtil.toJson(ob));
+			print.print(JsonUtil.toJSON(ob));
+			logger.info(JsonUtil.toJSON(ob));
 			print.flush();
 			print.close();
 		} catch (IOException e) {

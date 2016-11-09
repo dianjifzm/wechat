@@ -1,30 +1,26 @@
-package com.pingan.modules.user;
+package com.yilan.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
+import com.yilan.common.AbstractController;
+import com.yilan.common.ResponseVo;
+import com.yilan.service.UserService;
+import com.yilan.utils.CommonUtils;
+import com.yilan.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.pingan.common.AbstractController;
-import com.pingan.common.CommonUtils;
-import com.pingan.common.ResponseVo;
-import com.pingan.weixinVo.UserVo;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("user")
-public class UserController extends AbstractController{
+public class UserController extends AbstractController {
 
 //	private static final Logger logger = Logger.getLogger(UserController.class);
 	
 	@Autowired
 	private UserService userService;
-	
-	@RequestMapping(value="userRegisterIndex.do")
-	public String redirect2Register(){
-		return "user/userRegister";
-	}
 	
 	@RequestMapping(value="userRegister.do")
 	public void userRegister(HttpServletRequest request,HttpServletResponse response,UserVo user){
