@@ -1,5 +1,6 @@
 package com.yilan.utils;
 
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -33,9 +34,9 @@ public class MD5Utils {
 		return null;
 	}
 	
-	public static void main (String[] args){
+	public static void main (String[] args) throws UnsupportedEncodingException {
 		String src = "abc中国";
-		String MD5str = MD5Utils.getMD5(src.getBytes());
+		String MD5str = MD5Utils.getMD5(src.getBytes("utf-8"));
 		
 		System.out.println(MD5str);
 	}

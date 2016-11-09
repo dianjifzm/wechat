@@ -15,7 +15,7 @@ public class CommonUtils {
 	public static boolean isEmpty(Object ob){
 		if(ob instanceof String){
 			String target = (String)ob;
-			return (target == null) || (target.trim().length()==0);
+			return target.trim().length()==0;
 			
 		}else if (ob instanceof Collection){
 			
