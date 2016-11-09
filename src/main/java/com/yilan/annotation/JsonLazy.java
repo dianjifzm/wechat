@@ -1,4 +1,4 @@
-package com.yilan.utils;
+package com.yilan.annotation;
 
 /**
  * Created by pc on 2016/11/8.
