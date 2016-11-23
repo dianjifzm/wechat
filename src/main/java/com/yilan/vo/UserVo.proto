@@ -1,0 +1,18 @@
+syntax = "proto3";
+package com.yilan.vo;
+
+option java_package = "com.yilan.vo";
+option java_outer_classname = "UserVoProto";
+
+//定义规范：
+//message类 均首字母大写   大写！！！！
+message UserVo {
+    int32 userId =1;
+    string openId =2;
+    string name =3;
+    string cellPhone =4;
+    string address =5;
+    string createTime =6;
+    string updateTime =7;
+    string stt =8;
+}
