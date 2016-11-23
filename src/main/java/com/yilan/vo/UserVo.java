@@ -17,56 +17,79 @@ public class UserVo implements Serializable {
 	private String createTime;
 	private String updateTime;
 	private String stt;
-	
+
 	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+
+	public UserVo setUserId(int userId) {
 		this.userId = userId;
+		return this;
 	}
+
 	public String getOpenId() {
 		return openId;
 	}
-	public void setOpenId(String openId) {
+
+	public UserVo setOpenId(String openId) {
 		this.openId = openId;
+		return this;
 	}
+
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
+
+	public UserVo setName(String name) {
 		this.name = name;
+		return this;
 	}
+
 	public String getCellPhone() {
 		return cellPhone;
 	}
-	public void setCellPhone(String cellPhone) {
+
+	public UserVo setCellPhone(String cellPhone) {
 		this.cellPhone = cellPhone;
+		return this;
 	}
+
 	public String getAddress() {
 		return address;
 	}
-	public void setAddress(String address) {
+
+	public UserVo setAddress(String address) {
 		this.address = address;
+		return this;
 	}
+
 	public String getCreateTime() {
 		return createTime;
 	}
-	public void setCreateTime(String createTime) {
+
+	public UserVo setCreateTime(String createTime) {
 		this.createTime = createTime;
+		return this;
 	}
+
 	public String getUpdateTime() {
 		return updateTime;
 	}
-	public void setUpdateTime(String updateTime) {
+
+	public UserVo setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
+		return this;
 	}
+
 	public String getStt() {
 		return stt;
 	}
-	public void setStt(String stt) {
+
+	public UserVo setStt(String stt) {
 		this.stt = stt;
-	}  
-	
+		return this;
+	}
+
 	@Override
 	public String toString (){
 		

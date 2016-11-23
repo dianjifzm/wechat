@@ -41,6 +41,9 @@
         <jackson.version>1.9.10</jackson.version>
         <spring.security.version>4.1.3.RELEASE</spring.security.version>
         <logback.version>1.0.13</logback.version>
+        <poi.version>3.15</poi.version>
+        <netty.version>4.1.6.Final</netty.version>
+        <protobuf.version>3.1.0</protobuf.version>
     </properties>
 
     <dependencies>
@@ -203,6 +206,27 @@
             <artifactId>spring-security-web</artifactId>
             <version>${spring.security.version}</version>
         </dependency>
+        <!-- ================ 通讯工具 ===========================  -->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>${protobuf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>${netty.version}</version>
+        </dependency>
         <!-- ================ 工具类 ===========================  -->
         <dependency>
             <groupId>commons-beanutils</groupId>
@@ -215,14 +239,9 @@
             <version>3.2.1</version>
         </dependency>
         <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.1.1</version>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi.version}</version>
         </dependency>
     </dependencies>
     <build>
