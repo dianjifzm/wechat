@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration scan="false" scanPeriod="300 seconds" debug="false">
+<configuration>
 	<property name="USER_HOME" value="./logs/" />
 	<property name="LOG_MSG" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5p [%c] - %m%n" />
 	<property name="LOG_DIR" value="${USER_HOME}/%d{yyyyMMdd}"/>

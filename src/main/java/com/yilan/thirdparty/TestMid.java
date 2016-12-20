@@ -86,7 +86,7 @@ public class TestMid {
 		// while((index=reader.read(charBuffer))!=-1){
 		reader.read(charBuffer);
 		charBuffer.flip();
-		System.out.println("MID:" + charBuffer.toString());
+		System.out.println("MID:" + new String(charBuffer.toString().getBytes(),"GBK"));
 		// }
 
 		// �ر���Դ

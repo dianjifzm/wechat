@@ -20,7 +20,7 @@ public class SubReqClientHandler extends ChannelInboundHandlerAdapter {
         //socket激活连接后，立刻签入mid系统,调用ctx.write(msg) 将传递到ChannelOutboundHandler。
         ctx.write(new SimpleMidReqBody(100,""));
         //ctx.write()方法执行后，需要调用flush()方法才能令它立即执行。
-        ctx.flush();
+        ctx.flush(); // 将队列中的消息写入到SocketChannel发送给客户端
     }
 
     @Override
@@ -30,8 +30,8 @@ public class SubReqClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-        log.info("channelReadComplete....");
-        ctx.flush();
+        log.info("channelReadComplete....将工作的WORKSKEY保存起来");
+
     }
 
     @Override

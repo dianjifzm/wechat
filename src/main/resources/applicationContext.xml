@@ -82,7 +82,7 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 	    <property name="basePackage" value="com.yilan.**.dao" />
         <!-- 扫描basePackage下所有以@MyBatisRepository标识的 接口-->
-        <property name="annotationClass" value="com.apex.mall.annotation.MyBatisRepository"/>
+        <property name="annotationClass" value="com.yilan.annotation.MyBatisRepository"/>
 		<!-- 不添加这一段将报 java.lang.NoClassDefFoundError: Could not initialize class org.springframework.beans.factory.BeanCreationException-->
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
