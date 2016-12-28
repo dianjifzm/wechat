@@ -37,6 +37,11 @@ public class UserController extends AbstractController {
 		else writeJson(response,new ResponseVo("2", user, "注册成功，影响"+result+"行！"));
 		
 	}
+
+	@RequestMapping(value="userInformation")
+	public void userInformation(HttpServletRequest request,HttpServletResponse response){
+		writeJson(response,new ResponseVo("2", null, "获取用户个人信息！"));
+	}
 	
 	
 }

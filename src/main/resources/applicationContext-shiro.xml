@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- Realm实现 -->
+    <bean id="statelessRealm" class="com.yilan.shiro.StatelessRealm">
+        <property name="cachingEnabled" value="false"/>
+
+    </bean>
+
+    <!-- Subject工厂 -->
+    <bean id="subjectFactory" class="com.yilan.shiro.StatelessDefaultSubjectFactory"/>
+
+    <!-- 会话管理器 -->
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <property name="sessionValidationSchedulerEnabled" value="false"/>
+    </bean>
+
+    <!-- 安全管理器 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="statelessRealm"/>
+        <property name="subjectDAO.sessionStorageEvaluator.sessionStorageEnabled" value="false"/>
+        <property name="subjectFactory" ref="subjectFactory"/>
+        <property name="sessionManager" ref="sessionManager"/>
+    </bean>
+
+
+    <!-- 相当于调用SecurityUtils.setSecurityManager(securityManager) -->
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod" value="org.apache.shiro.SecurityUtils.setSecurityManager"/>
+        <property name="arguments" ref="securityManager"/>
+    </bean>
+
+
+    <bean id="tokenFilter" class="com.tairanchina.account.secuity.TokenFilter"/>
+    <bean id="statelessAuthcFilter" class="com.xxx.xxx.secuity.StatelessAuthcFilter"/>
+    <bean id="allRolesAuthorFilter" class="com.xxx.xxx.secuity.AllRolesAuthorFilter"/>
+    <bean id="anyRolesAuthorFilter" class="com.xxx.xxx.secuity.AnyRolesAuthorFilter"/>
+
+
+    <!-- Shiro的Web过滤器 -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="filters">
+            <util:map>
+                <entry key="tokenAuthc" value-ref="tokenFilter" />
+                <entry key="statelessAuthc" value-ref="statelessAuthcFilter"/>
+                <entry key="allRoles" value-ref="allRolesAuthorFilter"/>
+                <entry key="anyRoles" value-ref="anyRolesAuthorFilter"/>
+            </util:map>
+        </property>
+        <property name="filterChainDefinitions">
+            <value>
+                /api/xxx/login = anon
+                /api/xxx/register = anon
+                /api/xxx/logout = anon
+                /api/xxx/exist = anon
+                /api/xxx/user/**  = statelessAuthc
+                /api/xxx/users/**  = statelessAuthc, anyRoles[SUPER]
+                <!-- 业务访问url需要注意规范，如/api/coupon/XX/** = statelessAuthc(认证中心), anyRoles[ADMIN/USER](权限认证)-->
+            </value>
+        </property>
+    </bean>
+
+
+    <!-- Shiro生命周期处理器-->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+
+    <!-- AOP式方法级权限检查  -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
+        <property name="proxyTargetClass" value="true" />
+    </bean>
+
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+</beans>

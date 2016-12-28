@@ -1,8 +1,10 @@
 package com.yilan.dao;
 
 
+import com.yilan.annotation.MyBatisRepository;
 import com.yilan.vo.UserVo;
 
+@MyBatisRepository
 public interface UserDao {
 	
 	/**
