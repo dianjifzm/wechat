@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
     <!-- Realm实现 -->
     <bean id="statelessRealm" class="com.yilan.shiro.StatelessRealm">
         <property name="cachingEnabled" value="false"/>
@@ -32,10 +34,10 @@
     </bean>
 
 
-    <bean id="tokenFilter" class="com.tairanchina.account.secuity.TokenFilter"/>
-    <bean id="statelessAuthcFilter" class="com.xxx.xxx.secuity.StatelessAuthcFilter"/>
-    <bean id="allRolesAuthorFilter" class="com.xxx.xxx.secuity.AllRolesAuthorFilter"/>
-    <bean id="anyRolesAuthorFilter" class="com.xxx.xxx.secuity.AnyRolesAuthorFilter"/>
+    <bean id="statelessAuthcFilter" class="com.yilan.shiro.StatelessAuthcFilter"/>
+    <!--<bean id="tokenFilter" class="com.tairanchina.account.secuity.TokenFilter"/>-->
+    <!--<bean id="allRolesAuthorFilter" class="com.xxx.xxx.secuity.AllRolesAuthorFilter"/>-->
+    <!--<bean id="anyRolesAuthorFilter" class="com.xxx.xxx.secuity.AnyRolesAuthorFilter"/>-->
 
 
     <!-- Shiro的Web过滤器 -->
@@ -43,20 +45,20 @@
         <property name="securityManager" ref="securityManager"/>
         <property name="filters">
             <util:map>
-                <entry key="tokenAuthc" value-ref="tokenFilter" />
                 <entry key="statelessAuthc" value-ref="statelessAuthcFilter"/>
+                <!--<entry key="tokenAuthc" value-ref="tokenFilter" />
                 <entry key="allRoles" value-ref="allRolesAuthorFilter"/>
-                <entry key="anyRoles" value-ref="anyRolesAuthorFilter"/>
+                <entry key="anyRoles" value-ref="anyRolesAuthorFilter"/>-->
             </util:map>
         </property>
         <property name="filterChainDefinitions">
             <value>
-                /api/xxx/login = anon
-                /api/xxx/register = anon
-                /api/xxx/logout = anon
-                /api/xxx/exist = anon
-                /api/xxx/user/**  = statelessAuthc
-                /api/xxx/users/**  = statelessAuthc, anyRoles[SUPER]
+                /api/user/login = anon
+                /api/user/register = anon
+                /api/user/logout = anon
+                /api/user/exist = anon
+                /api/user/**  = statelessAuthc
+                <!--/api/xxx/users/**  = statelessAuthc, anyRoles[SUPER]-->
                 <!-- 业务访问url需要注意规范，如/api/coupon/XX/** = statelessAuthc(认证中心), anyRoles[ADMIN/USER](权限认证)-->
             </value>
         </property>

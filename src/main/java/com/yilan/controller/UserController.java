@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-@RequestMapping("user")
+@RequestMapping("/api/user")
 public class UserController extends AbstractController {
 
 //	private static final Logger logger = Logger.getLogger(UserController.class);
@@ -22,8 +22,8 @@ public class UserController extends AbstractController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value="userRegister.do")
-	public void userRegister(HttpServletRequest request,HttpServletResponse response,UserVo user){
+	@RequestMapping(value="/register")
+	public void register(HttpServletRequest request,HttpServletResponse response,UserVo user){
 		
 		logger.info("userRegister="+user);
 		if(CommonUtils.isEmpty(user.getOpenId())) {
@@ -38,8 +38,13 @@ public class UserController extends AbstractController {
 		
 	}
 
-	@RequestMapping(value="userInformation")
-	public void userInformation(HttpServletRequest request,HttpServletResponse response){
+	@RequestMapping(value="/login")
+	public void login(HttpServletRequest request,HttpServletResponse response,UserVo user){
+		writeJson(response,new ResponseVo("2", null, "登陆成功！"));
+	}
+
+	@RequestMapping(value="/information")
+	public void information(HttpServletRequest request,HttpServletResponse response){
 		writeJson(response,new ResponseVo("2", null, "获取用户个人信息！"));
 	}
 	

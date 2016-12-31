@@ -20,7 +20,7 @@ import javax.crypto.spec.SecretKeySpec;
  * @author zhujiahao
  */
 public class Hmac {
-    private final String DEFAULT_CHARSET_UTF8 = "utf-8";
+    private static final String DEFAULT_CHARSET_UTF8 = "utf-8";
 
     /**
      * 根据给定密钥生成算法创建密钥

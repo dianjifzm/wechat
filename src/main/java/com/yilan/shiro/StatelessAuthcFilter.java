@@ -1,5 +1,8 @@
 package com.yilan.shiro;
 
+import com.yilan.utils.Constants;
+import java.util.HashMap;
+import java.util.Map;
 import org.apache.shiro.web.filter.AccessControlFilter;
 
 import javax.servlet.ServletRequest;
@@ -42,4 +45,3 @@ public class StatelessAuthcFilter extends AccessControlFilter {
         httpResponse.getWriter().write("login error");
     }
 }
-&nbsp;
