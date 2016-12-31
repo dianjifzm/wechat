@@ -57,7 +57,7 @@
                 /api/user/register = anon
                 /api/user/logout = anon
                 /api/user/exist = anon
-                /api/user/**  = statelessAuthc
+                /api/user/information  = statelessAuthc
                 <!--/api/xxx/users/**  = statelessAuthc, anyRoles[SUPER]-->
                 <!-- 业务访问url需要注意规范，如/api/coupon/XX/** = statelessAuthc(认证中心), anyRoles[ADMIN/USER](权限认证)-->
             </value>

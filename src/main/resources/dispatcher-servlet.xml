@@ -14,9 +14,9 @@
  <!-- 默认的注解映射的支持 -->  
     <mvc:annotation-driven />
     <!-- xmlns:mvc="http://www.springframework.org/schema/mvc"  -->
- <!-- <import resource="component-scan.xml" /> -->
+	<!--<import resource="applicationContext-shiro.xml" />-->
  	<!-- 自动扫描的包名   与 applicationContext.xml的扫描要同时加-->
-	<context:component-scan base-package="com.pingan" use-default-filters="false">
+	<context:component-scan base-package="com.yilan" use-default-filters="false">
 	    <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan> 
 
@@ -24,6 +24,7 @@
 	<mvc:default-servlet-handler />
  
     
+<!--
  <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	 <property name="prefix">
 	 	<value>/WEB-INF/views/</value>
@@ -32,10 +33,11 @@
 		 <value>.jsp</value>
 	 </property>
  </bean>
+-->
 
  <!-- 拦截器 -->
  <mvc:interceptors>
- 	<bean class="com.pingan.base.ControllerInterceptor" />
+ 	<bean class="com.yilan.interceptor.ControllerInterceptor" />
  </mvc:interceptors>  
 
 
